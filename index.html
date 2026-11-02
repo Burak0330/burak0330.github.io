@@ -1,77 +1,139 @@
 
-
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Burak | Personal Website</title>
+    <meta name="description" content="The personal website of Burak. Student, developer and technology enthusiast.">
 
-    <style>
-
-        body {
-
-            background: #0d1117;
-
-            color: white;
-
-            font-family: Arial, sans-serif;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            min-height: 100vh;
-
-            margin: 0;
-
-        }
-
-        .container {
-
-            max-width: 600px;
-
-            padding: 30px;
-
-        }
-
-        h1 { font-size: 42px; }
-
-        p { color: #aaa; line-height: 1.7; }
-
-        a { color: #58a6ff; margin-right: 15px; }
-
-    </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1>Hi, I'm Burak.</h1>
+        <!-- NAVIGATION -->
+        <nav>
+            <div class="logo">BURAK.</div>
 
-        <p>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
 
-            CS student interested
+        <!-- HERO -->
+        <header class="hero">
 
-            in software development, technology, finance, coding
+            <div class="status">
+                ● Exploring and building
+            </div>
 
-        </p>
+            <h1>Hi, I'm Burak.</h1>
 
-        <a href="https://github.com/Burak0330">GitHub</a>
+            <p>
+                Computer Programming student interested in
+                software development, technology, finance
+                and building things on the internet.
+            </p>
 
-        <a href="mailto:akpinarburak599@gmail.com">Contact</a>
+            <div class="buttons">
+                <a class="button"
+                   href="https://github.com/Burak0330"
+                   target="_blank">
+                    GitHub ↗
+                </a>
+
+                <a class="button" href="#contact">
+                    Get in touch
+                </a>
+            </div>
+
+        </header>
+
+        <!-- ABOUT -->
+        <section id="about">
+
+            <h2 class="section-title">About me</h2>
+
+            <p class="section-text">
+                I'm a student exploring the world of programming
+                and technology. I enjoy learning new things,
+                experimenting with ideas and developing my skills.
+            </p>
+
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project">
+                <h3>Personal Website</h3>
+
+                <p>
+                    My own corner of the internet, built with
+                    HTML, CSS and JavaScript.
+                </p>
+
+                <br>
+
+                <a href="https://github.com/Burak0330"
+                   target="_blank">
+                    View GitHub ↗
+                </a>
+            </div>
+
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+
+            <h2 class="section-title">Technologies</h2>
+
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">Programming</span>
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+
+            <h2 class="section-title">Contact</h2>
+
+            <p class="section-text">
+                Have an interesting idea or just want to talk?
+                Feel free to reach out.
+            </p>
+
+            <br>
+
+            <a class="button"
+               href="mailto:akpinarburak599@gmail.com">
+                Send me an email ↗
+            </a>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            © <span id="year"></span> Burak. Built with curiosity.
+        </footer>
 
     </div>
 
-</body>
+    <script src="script.js"></script>
 
+</body>
 </html>
