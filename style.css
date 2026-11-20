@@ -1,914 +1,457 @@
 /* ---------- THEME ---------- */
-2
 :root {
-3
     --bg: #0d1117;
-4
     --surface: #161b22;
-5
     --surface-hover: #21262d;
-6
     --border: #30363d;
-7
     --border-subtle: #21262d;
-8
     --text: #e6edf3;
-9
     --text-soft: #c9d1d9;
-10
     --muted: #8b949e;
-11
     --accent: #58a6ff;
-12
     --green: #3fb950;
-13
     --green-button: #238636;
-14
     --green-button-hover: #2ea043;
-15
     --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-16
 
-17
     color-scheme: dark;
-18
 }
-19
 
-20
 /* ---------- GENERAL ---------- */
-21
 * {
-22
     margin: 0;
-23
     padding: 0;
-24
     box-sizing: border-box;
-25
 }
-26
 
-27
 html {
-28
     scroll-behavior: smooth;
-29
 }
-30
 
-31
 body {
-32
     background: var(--bg);
-33
     color: var(--text);
-34
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-35
                  Helvetica, Arial, sans-serif;
-36
     line-height: 1.6;
-37
     -webkit-font-smoothing: antialiased;
-38
     overflow-x: hidden;
-39
 }
-40
 
-41
 a {
-42
     color: inherit;
-43
     text-decoration: none;
-44
 }
-45
 
-46
 a:focus-visible,
-47
 button:focus-visible {
-48
     outline: 2px solid var(--accent);
-49
     outline-offset: 3px;
-50
     border-radius: 4px;
-51
 }
-52
 
-53
 ul {
-54
     list-style: none;
-55
 }
-56
 
-57
 .container {
-58
     width: 90%;
-59
     max-width: 1000px;
-60
     margin: 0 auto;
-61
 }
-62
 
-63
 .skip-link {
-64
     position: absolute;
-65
     left: 12px;
-66
     top: -60px;
-67
     background: var(--surface);
-68
     border: 1px solid var(--border);
-69
     padding: 8px 14px;
-70
     border-radius: 6px;
-71
     z-index: 100;
-72
     font-size: 14px;
-73
 }
-74
 
-75
 .skip-link:focus {
-76
     top: 12px;
-77
 }
-78
 
-79
 /* ---------- NAVIGATION ---------- */
-80
 .site-header {
-81
     position: sticky;
-82
     top: 0;
-83
     z-index: 10;
-84
     background: rgba(13, 17, 23, 0.85);
-85
     -webkit-backdrop-filter: blur(8px);
-86
     backdrop-filter: blur(8px);
-87
     border-bottom: 1px solid var(--border-subtle);
-88
 }
-89
 
-90
 /* Scroll progress bar */
-91
 .progress {
-92
     position: absolute;
-93
     left: 0;
-94
     bottom: -1px;
-95
     height: 2px;
-96
     width: 0;
-97
     background: var(--accent);
-98
 }
-99
 
-100
 nav {
-101
     display: flex;
-102
     justify-content: space-between;
-103
     align-items: center;
-104
     padding: 18px 0;
-105
 }
-106
 
-107
 .logo {
-108
     font-size: 20px;
-109
     font-weight: 700;
-110
     letter-spacing: 1px;
-111
 }
-112
 
-113
 .nav-links {
-114
     display: flex;
-115
     gap: 25px;
-116
     font-size: 14px;
-117
     color: var(--muted);
-118
 }
-119
 
-120
 .nav-links a {
-121
     transition: color 0.2s;
-122
 }
-123
 
-124
 .nav-links a:hover,
-125
 .nav-links a.active {
-126
     color: #fff;
-127
 }
-128
 
-129
 /* ---------- HERO ---------- */
-130
 .hero {
-131
     position: relative;
-132
     isolation: isolate;
-133
     padding: 110px 0 100px;
-134
     border-top: none;
-135
 }
-136
 
-137
 /* Slowly drifting glow behind the hero */
-138
 .hero::before {
-139
     content: "";
-140
     position: absolute;
-141
     inset: -30% -10% -10% -10%;
-142
     z-index: -1;
-143
     background:
-144
         radial-gradient(circle at 20% 30%, rgba(88, 166, 255, 0.14), transparent 45%),
-145
         radial-gradient(circle at 80% 60%, rgba(63, 185, 80, 0.10), transparent 45%);
-146
     animation: drift 16s ease-in-out infinite alternate;
-147
 }
-148
 
-149
 @keyframes drift {
-150
     from { transform: translate3d(-3%, -2%, 0) scale(1); }
-151
     to   { transform: translate3d(3%, 3%, 0) scale(1.08); }
-152
 }
-153
 
-154
 /* Hero entrance: one staggered sequence on page load */
-155
 .hero > * {
-156
     animation: rise 0.9s var(--ease) both;
-157
 }
-158
 .hero > :nth-child(1) { animation-delay: 0.05s; }
-159
 .hero > :nth-child(2) { animation-delay: 0.15s; }
-160
 .hero > :nth-child(3) { animation-delay: 0.30s; }
-161
 .hero > :nth-child(4) { animation-delay: 0.45s; }
-162
 
-163
 @keyframes rise {
-164
     from { opacity: 0; transform: translateY(28px); }
-165
     to   { opacity: 1; transform: none; }
-166
 }
-167
 
-168
 .status {
-169
     display: flex;
-170
     align-items: center;
-171
     gap: 8px;
-172
     color: var(--green);
-173
     font-size: 13px;
-174
     margin-bottom: 20px;
-175
 }
-176
 
-177
 .status-dot {
-178
     width: 8px;
-179
     height: 8px;
-180
     border-radius: 50%;
-181
     background: var(--green);
-182
     animation: pulse 2s ease-in-out infinite;
-183
 }
-184
 
-185
 @keyframes pulse {
-186
     0%, 100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.5); }
-187
     50%      { box-shadow: 0 0 0 6px rgba(63, 185, 80, 0); }
-188
 }
-189
 
-190
 .hero h1 {
-191
     font-size: clamp(42px, 8vw, 68px);
-192
     letter-spacing: -2px;
-193
     line-height: 1.1;
-194
     margin-bottom: 20px;
-195
 }
-196
 
-197
 .hero-text {
-198
     color: var(--muted);
-199
     max-width: 550px;
-200
     font-size: 17px;
-201
 }
-202
 
-203
 .buttons {
-204
     display: flex;
-205
     flex-wrap: wrap;
-206
     gap: 15px;
-207
     margin-top: 30px;
-208
 }
-209
 
-210
 .button {
-211
     display: inline-block;
-212
     padding: 10px 18px;
-213
     border: 1px solid var(--border);
-214
     border-radius: 7px;
-215
     background: transparent;
-216
     color: inherit;
-217
     font: inherit;
-218
     font-size: 14px;
-219
     cursor: pointer;
-220
     transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease);
-221
 }
-222
 
-223
 .button:hover {
-224
     background: var(--surface-hover);
-225
     transform: translateY(-2px);
-226
 }
-227
 
-228
 .button:active {
-229
     transform: scale(0.97);
-230
 }
-231
 
-232
 .button.primary {
-233
     background: var(--green-button);
-234
     border-color: var(--green-button);
-235
     color: #fff;
-236
 }
-237
 
-238
 .button.primary:hover {
-239
     background: var(--green-button-hover);
-240
     border-color: var(--green-button-hover);
-241
 }
-242
 
-243
 /* ---------- SECTIONS ---------- */
-244
 section {
-245
     padding: 55px 0;
-246
     border-top: 1px solid var(--border-subtle);
-247
     scroll-margin-top: 70px;
-248
 }
-249
 
-250
 .section-title {
-251
     font-size: 23px;
-252
     margin-bottom: 25px;
-253
 }
-254
 
-255
 .section-text {
-256
     color: var(--muted);
-257
     max-width: 650px;
-258
 }
-259
 
-260
 .contact-button {
-261
     margin-top: 25px;
-262
     overflow-wrap: anywhere;
-263
 }
-264
 
-265
 /* Scroll reveal (only active when JS is running) */
-266
 .js .reveal {
-267
     opacity: 0;
-268
     transform: translateY(26px);
-269
     transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-270
 }
-271
 
-272
 .js .reveal.in {
-273
     opacity: 1;
-274
     transform: none;
-275
 }
-276
 
-277
 /* ---------- PROJECTS ---------- */
-278
 .project {
-279
     background: var(--surface);
-280
     border: 1px solid var(--border);
-281
     border-radius: 10px;
-282
     padding: 22px;
-283
     margin-bottom: 15px;
-284
     transition: border-color 0.25s, transform 0.3s var(--ease), box-shadow 0.3s;
-285
 }
-286
 
-287
 .project:hover {
-288
     border-color: var(--accent);
-289
     transform: translateY(-4px);
-290
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-291
 }
-292
 
-293
 .project h3 {
-294
     margin-bottom: 8px;
-295
 }
-296
 
-297
 .project p {
-298
     color: var(--muted);
-299
     font-size: 14px;
-300
 }
-301
 
-302
 .project-link {
-303
     display: inline-block;
-304
     margin-top: 14px;
-305
     font-size: 14px;
-306
     color: var(--accent);
-307
 }
-308
 
-309
 .project-link:hover {
-310
     text-decoration: underline;
-311
 }
-312
 
-313
 /* ---------- SKILLS ---------- */
-314
 .skills {
-315
     display: flex;
-316
     flex-wrap: wrap;
-317
     gap: 10px;
-318
 }
-319
 
-320
 .skill {
-321
     background: var(--surface);
-322
     border: 1px solid var(--border);
-323
     border-radius: 6px;
-324
     padding: 7px 13px;
-325
     color: var(--text-soft);
-326
     font-size: 13px;
-327
     transition: border-color 0.2s, transform 0.2s var(--ease);
-328
 }
-329
 
-330
 .skill:hover {
-331
     border-color: var(--accent);
-332
     transform: translateY(-2px);
-333
 }
-334
 
-335
 /* Skills pop in one after another */
-336
 .js .skills .skill {
-337
     opacity: 0;
-338
     transform: translateY(12px) scale(0.95);
-339
     transition:
-340
         opacity 0.5s calc(var(--i, 0) * 80ms),
-341
         transform 0.5s var(--ease) calc(var(--i, 0) * 80ms),
-342
         border-color 0.2s;
-343
 }
-344
 
-345
 .js .reveal.in .skills .skill {
-346
     opacity: 1;
-347
     transform: none;
-348
 }
-349
 
-350
 /* ---------- MINIGAME ---------- */
-351
 .game {
-352
     max-width: 640px;
-353
     background: var(--surface);
-354
     border: 1px solid var(--border);
-355
     border-radius: 12px;
-356
     overflow: hidden;
-357
 }
-358
 
-359
 .game-hud {
-360
     display: flex;
-361
     justify-content: space-between;
-362
     padding: 10px 16px;
-363
     font-size: 13px;
-364
     color: var(--muted);
-365
     border-bottom: 1px solid var(--border-subtle);
-366
 }
-367
 
-368
 .game-hud b {
-369
     color: var(--text);
-370
     font-variant-numeric: tabular-nums;
-371
     margin-left: 4px;
-372
 }
-373
 
-374
 .game-stage {
-375
     position: relative;
-376
 }
-377
 
-378
 #canvas {
-379
     display: block;
-380
     width: 100%;
-381
     height: auto;
-382
     aspect-ratio: 16 / 9;
-383
     background: var(--bg);
-384
 }
-385
 
-386
 .game-overlay {
-387
     position: absolute;
-388
     inset: 0;
-389
     display: flex;
-390
     flex-direction: column;
-391
     align-items: center;
-392
     justify-content: center;
-393
     gap: 16px;
-394
     padding: 20px;
-395
     text-align: center;
-396
     background: rgba(13, 17, 23, 0.8);
-397
     transition: opacity 0.3s;
-398
 }
-399
 
-400
 .game-overlay.hidden {
-401
     opacity: 0;
-402
     pointer-events: none;
-403
 }
-404
 
-405
 /* ---------- FOOTER ---------- */
-406
 footer {
-407
     border-top: 1px solid var(--border-subtle);
-408
     padding: 25px 0;
-409
     color: var(--muted);
-410
     font-size: 13px;
-411
     text-align: center;
-412
 }
-413
 
-414
 /* ---------- MOBILE ---------- */
-415
 @media (max-width: 600px) {
-416
     nav {
-417
         padding: 14px 0;
-418
     }
-419
 
-420
     .logo {
-421
         font-size: 17px;
-422
     }
-423
 
-424
     .nav-links {
-425
         gap: 11px;
-426
         font-size: 12px;
-427
     }
-428
 
-429
     .hero {
-430
         padding: 80px 0 65px;
-431
     }
-432
 }
-433
 
-434
 @media (max-width: 380px) {
-435
     .logo {
-436
         font-size: 15px;
-437
     }
-438
 
-439
     .nav-links {
-440
         gap: 8px;
-441
         font-size: 11px;
-442
     }
-443
 }
-444
 
-445
 /* ---------- REDUCED MOTION ---------- */
-446
 @media (prefers-reduced-motion: reduce) {
-447
     html {
-448
         scroll-behavior: auto;
-449
     }
-450
 
-451
     *,
-452
     *::before,
-453
     *::after {
-454
         animation: none !important;
-455
         transition: none !important;
-456
     }
-457
 }
-458
